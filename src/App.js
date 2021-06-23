@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import Produtos from './Produtos/Produtos';
 import Produto from './Produtos/ProdutoDetalhe';
 import CadastroProduto from './Produtos/CadastroProduto';
+import Perfil from './Login/Perfil';
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login/>
+        </Route>
+        <Route exact path="/perfil">
+          <Perfil/>
         </Route>
         <Route path="/produtos/:id">
           <Produto />
