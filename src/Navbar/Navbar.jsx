@@ -12,6 +12,7 @@ const Navbar = () =>{
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/cadastro">Cadastre-se</Link></li>
+                    <li><Link to="/cadastroproduto">Cadastar Produto</Link></li>
                 </ul>
                 <ul>
                     <li><img className="carrinho" src={carrinho}></img></li>

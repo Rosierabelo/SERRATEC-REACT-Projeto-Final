@@ -34,7 +34,7 @@ h1 {
       font-size: 20px;
     }
   
-    .botaoLoginCadastro {
+    .botaoProdCadastro {
       width: 100%;
       font-size: 20px;
       padding: 5px;
@@ -46,7 +46,7 @@ h1 {
       margin-bottom: 15px;
     }
     
-    .botaoLoginCadastro:hover {
+    .botaoProdCadastro:hover {
       background-color: black;
       color: white;
     }

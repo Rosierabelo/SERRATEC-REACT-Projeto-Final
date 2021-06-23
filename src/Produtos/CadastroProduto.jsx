@@ -56,14 +56,14 @@ const FormularioRegistro = () => {
 
     return (
        <div className="formulario">
-           <h1>Página de cadastro de produto</h1>
+           <h1>Cadastro de produto</h1>
            <form onSubmit={cadastrarProduto}>
             <div>
                 <label className="labels">Nome</label>
                 <input required value={nome} onChange={manipuladorNome} />
             </div>
             <div>
-                <label className="labels">Cógigo</label>
+                <label className="labels">Código</label>
                 <input required value={codigo} onChange={manipuladorCodigo} />
             </div>
             <div>
@@ -82,7 +82,7 @@ const FormularioRegistro = () => {
                 <label className="labels">Categoria</label>
                 <input required value={categoria} onChange={manipuladorCategoria} />
             </div>
-            <button>
+            <button className="botaoProdCadastro">
                 Cadastrar
             </button>
         </form>

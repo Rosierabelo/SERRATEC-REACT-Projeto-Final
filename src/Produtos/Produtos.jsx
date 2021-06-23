@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import http from '../Http';
 import CardProdutos from './CardProdutos';
+import './estilo.css';
 
 const Produtos = () => {
 
@@ -12,9 +13,7 @@ const Produtos = () => {
 
     return (
         <div>
-            <section>
-                <h2>Produtos</h2>
-            </section>
+            <h1>Produtos</h1>
             <section> 
                 {produtos.map((item, indice) => <CardProdutos key={indice} id={item.id} codigo={item.codigo} categoria={item.categoria} nome={item.nome} descricao={item.descricao} preco={item.preco}/>)}
             </section>
