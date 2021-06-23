@@ -6,8 +6,8 @@ const CardProdutos = ({ nome, preco, id, categoria }) => {
         <div className="cardProduto">
             <h3 className="titulo">{nome}</h3>
             <div>
-                <h4>{categoria}</h4>
-                <p>{preco}</p>
+               <div> <h4>{categoria.nome}</h4></div>
+                <div className='cardPreco'><p>R$ </p>{preco}</div>
             </div>
             <div className='link'><Link to={`/produtos/${id}`}>Ver detalhes</Link></div>
         </div>

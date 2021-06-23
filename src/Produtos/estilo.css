@@ -1,8 +1,13 @@
 .cardProduto{
-    border: 3px solid darkslategrey;
+    border: 3px solid #333;
     border-radius: 10px;
     margin: 5px;
     flex: 0 0 30%;
+}
+.cardPreco{
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .link{
     text-decoration: none;
@@ -12,7 +17,7 @@
     text-align: center;
     border: 2px solid transparent;
     border-radius: 5px;
-    background-color:darkslategrey;
+    background-color:#333;
     color: floralwhite;
     margin: 3px 1px;
     min-height: 80px;

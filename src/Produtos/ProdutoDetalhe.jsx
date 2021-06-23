@@ -7,7 +7,7 @@ const Produto = () => {
     const [produto, setProduto] = useState({});
 
     useEffect(() => {
-        http.get('produtos/' + id).then(response => setProduto(response.data))
+        http.get('produto/' + id).then(response => setProduto(response.data))
     }, [id])
 
     return(
