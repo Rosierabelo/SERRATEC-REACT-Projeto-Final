@@ -32,7 +32,7 @@ function App() {
         <Route exact path="/perfil">
           <Perfil/>
         </Route>
-        <Route path="/produtos/:id">
+        <Route path="/produtos/:nome">
           <Produto />
         </Route>
         <Route path="/cadastroproduto">
