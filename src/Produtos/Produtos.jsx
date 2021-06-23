@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import http from '../Http';
+import CardProdutos from './CardProdutos';
 
 const Produtos = () => {
 

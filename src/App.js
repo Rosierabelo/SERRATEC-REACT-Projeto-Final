@@ -3,13 +3,14 @@ import Cadastro from './Login/Cadastro';
 import Navbar from './Navbar/Navbar';
 import Home from './Home/Home'
 import Login from './Login/Login';
+import Produtos from './Produtos/Produtos';
 function App() {
   return (
     <BrowserRouter>
     <Navbar/>
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Produtos/>
         </Route>
         <Route exact path="/cadastro">
           <Cadastro/>

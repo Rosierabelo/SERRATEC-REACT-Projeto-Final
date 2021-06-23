@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import './estilo.css'
 
 const CardProdutos = ({ nome, preco, id, categoria }) => {
     return (
