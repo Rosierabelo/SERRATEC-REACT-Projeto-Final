@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import http from '../Http';
-<<<<<<< HEAD
-import CardProdutos from '../Produtos/CardProdutos';
-=======
 import CardProdutos from './CardProdutos';
->>>>>>> 7b1e2afa22b143f01a69fd4dc6dd7232a22b4263
 
 const Produtos = () => {
 
