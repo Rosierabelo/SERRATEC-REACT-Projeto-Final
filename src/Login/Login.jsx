@@ -7,15 +7,15 @@ const Login = () =>{
     const [senha, setSenha] = useState('')
 
     const efetuarLogin = (evento) =>{
-        evento.preventDefaul()
+        evento.preventDefault()
         const usuario = {
-            email : email,
-            senha : senha
+            user: email,
+            pass : senha
         }
         http.post('auth', usuario)
         .then(response => {
             console.log(response.data)
-            localStorage.setItem('token', response.data.access_token)
+            localStorage.setItem('token', response.data.token)
         })
         .catch(erro => {
             console.log("Algo deu errado");
@@ -34,7 +34,7 @@ const Login = () =>{
     return (
         <div>
         <h1>Tela de Login</h1>
-        <form>
+        <form onSubmit={efetuarLogin}>
  
             <div>
                 <label>Email</label>

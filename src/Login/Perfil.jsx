@@ -1,7 +1,23 @@
 
 const Perfil = () => {
     return (
-        <h1>Perfil</h1>
+        <div>
+            <h1>Perfil</h1>
+            <div>
+                <form>
+                    <div>
+                        <label>Nome</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>Nome</label>
+                        <input type="text" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
     )
 }
 
