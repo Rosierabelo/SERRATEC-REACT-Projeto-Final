@@ -16,6 +16,7 @@ const Login = () =>{
         .then(response => {
             console.log(response.data)
             localStorage.setItem('token', response.data.token)
+            localStorage.setItem('id', response.data.id)
         })
         .catch(erro => {
             console.log("Algo deu errado");
@@ -44,7 +45,7 @@ const Login = () =>{
                 <label>Senha</label>
                 <input value={senha} onChange={manipuladorSenha} type="password" required></input>
             </div>
-            <button className="botaoLoginCadastro">Cadastrar</button>
+            <button className="botaoLoginCadastro">Entrar</button>
         </form>
     </div>
     )

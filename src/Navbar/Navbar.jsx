@@ -15,7 +15,7 @@ const Navbar = () =>{
                     <li><Link to="/cadastroproduto">Cadastar Produto</Link></li>
                 </ul>
                 <ul>
-                    <li><img className="carrinho" src={carrinho}></img></li>
+                    <a href="./Carrinho"><img className="carrinho" src={carrinho}></img></a>
                     <a href="./Perfil"><img className="carrinho" src={perfil}></img></a>
                 </ul>
             </nav>

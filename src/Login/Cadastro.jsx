@@ -20,8 +20,10 @@ const Cadastro = () =>{
             cpf: cpf,
             telefone : telefone,
             dataNascimento : dataNascimento,
-            cep : cep,
-            numeroResidencia : numeroResidencia,
+            endereco : {
+                cep : cep,
+                numeroResidencia : numeroResidencia
+            },
             email : email,
             username : username,
             senha : senha

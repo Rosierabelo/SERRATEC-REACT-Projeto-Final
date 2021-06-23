@@ -6,7 +6,16 @@ import Produtos from './Produtos/Produtos';
 import Produto from './Produtos/ProdutoDetalhe';
 import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
+import Carrinho from './Carrinho/Carrinho';
+import { useState } from 'react';
 function App() {
+  const [carrinho, setCarrinho] = useState([])
+  const adicionaProduto = (item) =>{
+    setCarrinho([
+      ...carrinho,
+      item
+    ])
+  }
   return (
     <BrowserRouter>
     <Navbar/>
@@ -28,6 +37,9 @@ function App() {
         </Route>
         <Route path="/cadastroproduto">
           <CadastroProduto />
+        </Route>
+        <Route path="/carrinho">
+          <Carrinho produtos={carrinho}/>
         </Route>
       </Switch>
     </BrowserRouter>
