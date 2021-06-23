@@ -3,6 +3,8 @@ import Cadastro from './Login/Cadastro';
 import Navbar from './Navbar/Navbar';
 import Home from './Home/Home'
 import Login from './Login/Login';
+import Produtos from './Produtos/Produtos';
+import Produto from './Produtos/ProdutoDetalhe';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,12 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login/>
+        </Route>
+        <Route exact path="/produtos">
+          <Produtos/>
+        </Route>
+        <Route path="/produtos/:id">
+          <Produto />
         </Route>
       </Switch>
     </BrowserRouter>
