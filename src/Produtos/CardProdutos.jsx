@@ -9,7 +9,7 @@ const CardProdutos = ({ nome, preco, id, categoria }) => {
                <div> <h4>{categoria.nome}</h4></div>
                 <div className='cardPreco'><p>R$ </p>{preco}</div>
             </div>
-            <div className='link'><Link to={`/produtos/${id}`}>Ver detalhes</Link></div>
+            <div className='link'><Link to={`/produtos/${nome}`}>Ver detalhes</Link></div>
         </div>
     )
 }
