@@ -33,7 +33,7 @@ function App() {
           <Perfil/>
         </Route>
         <Route path="/produtos/:nome">
-          <Produto />
+          <Produto aoAdicionar={adicionaProduto} />
         </Route>
         <Route path="/cadastroproduto">
           <CadastroProduto />

@@ -2,21 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../Http";
 
-const Produto = () => {
+const Produto = ({aoAdicionar}) => {
     const { nome } = useParams();
     const [produto, setProduto] = useState({categoria:{}, preco:0});
-    const [carrinho, setCarrinho] = useState([]);
-    
-    const adicionaProduto = (item) =>{
-    setCarrinho([
-        ...carrinho,
-        item
-        ])
-     }
 
     useEffect(() => {
         http.get('produto/' + nome).then(response => setProduto(response.data))
     }, [nome])
+
+    const adicionaAoCarrinho = ()=>{
+        aoAdicionar(produto)
+    }
 
     return(
         <div className="detalhe-prod">
@@ -28,8 +24,8 @@ const Produto = () => {
                 <div className="preco-prod">
                     <p>R$ </p><p>{produto.preco.toFixed(2)}</p>
                 </div>
-                <button>
-                    Comprar{adicionaProduto}
+                <button onClick={adicionaAoCarrinho}>
+                    Comprar
                 </button>
             </div>
         </div>
