@@ -8,7 +8,7 @@ import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
-import Categoria from './Produtos/Categoria';
+import Finalizar from './Carrinho/Finalizar';
 
 function App() {
 
@@ -33,6 +33,7 @@ function App() {
   const [carrinho, setCarrinho] = useState([])
   const adicionaProduto = (item) =>{
     console.log(item)
+    item.quantidade = 1;
     setCarrinho([
       ...carrinho,
       item
@@ -66,8 +67,8 @@ function App() {
         <Route path="/cadastroproduto">
           <CadastroProduto />
         </Route>
-        <Route path="/categoria">
-          <Categoria />
+        <Route path="/finalizar/:id">
+          <Finalizar />
         </Route>
         <Route path="/carrinho">
           <Carrinho produtos={carrinho} aoExcluir={aoExcluir} />
