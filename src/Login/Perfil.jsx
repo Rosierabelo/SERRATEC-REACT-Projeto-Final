@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import http from "../Http"
+import axios from "axios"
 const Perfil = () => {
 
      const id = localStorage.getItem('id')
@@ -33,7 +34,7 @@ const Perfil = () => {
             return
         }
         const url = `https://viacep.com.br/ws/${evento.target.value}/json/`;
-        http.get(url)
+        axios.get(url)
         .then(response => {
           if (!response.data.erro){
               setRua(response.data.logradouro)

@@ -1,10 +1,21 @@
+import MensagemErro from './MensagemErro'
+
 import http from '../Http'
 import './Login.css'
-import { useState } from 'react'
-const Login = () =>{
+import { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
+const Login = ({onLogin}) =>{
 
+    const [mensagem, setMensagem] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
+    const history = useHistory();
+
+
+    useEffect(() => {
+        localStorage.removeItem('token')
+      }, [])
+    
 
     const efetuarLogin = (evento) =>{
         evento.preventDefault()
@@ -17,11 +28,20 @@ const Login = () =>{
             console.log(response.data)
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('id', response.data.id)
+            onLogin(response.data.token)
+            history.push('/')
         })
         .catch(erro => {
-            console.log("Algo deu errado");
-            console.log(erro);
-        })
+            console.log('Algo deu errado')
+            if (erro.response.data && erro.response.data.message) {
+              setMensagem(erro.response.data.message)
+            } else {
+              setMensagem('OPS... um erro não esperado.')
+            }
+            setTimeout(() => {
+              setMensagem('')
+            }, 4500);
+          })
     }
 
     const manipuladorEmail = (evento) =>{
@@ -35,6 +55,7 @@ const Login = () =>{
     return (
         <div>
         <h1>Tela de Login</h1>
+        { mensagem && <MensagemErro msg={mensagem} /> }
         <form onSubmit={efetuarLogin}>
  
             <div>

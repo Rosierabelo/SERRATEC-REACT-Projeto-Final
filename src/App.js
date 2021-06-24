@@ -7,8 +7,28 @@ import Produto from './Produtos/ProdutoDetalhe';
 import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 function App() {
+
+
+  const [token, setToken] = useState('')
+  const onLogin = (token) => {
+    setToken(token)
+  }
+
+  const logout = () => {
+    setToken('')
+  }  
+
+  useEffect(() =>{
+    const tokeAntigo = localStorage.getItem('token')
+    if (tokeAntigo) {
+      setToken(tokeAntigo)
+    }
+  }, [])
+
+
   const [carrinho, setCarrinho] = useState([])
   const adicionaProduto = (item) =>{
     setCarrinho([
@@ -18,7 +38,7 @@ function App() {
   }
   return (
     <BrowserRouter>
-    <Navbar/>
+    <Navbar token={token} aoLogout={logout}/>
       <Switch>
         <Route exact path="/">
           <Produtos/>
@@ -27,7 +47,7 @@ function App() {
           <Cadastro/>
         </Route>
         <Route exact path="/login">
-          <Login/>
+          <Login onLogin={onLogin}/>
         </Route>
         <Route exact path="/perfil">
           <Perfil/>
