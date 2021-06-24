@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import MensagemErro from '../Login/MensagemAlerta'
 import http from "../Http"
 import axios from "axios"
 const Perfil = () => {
@@ -17,6 +18,8 @@ const Perfil = () => {
     const [cidade, setCidade] = useState('')
     const [uf, setUf] = useState('')
     const [complemento, setComplemento] = useState('')
+    const [mensagem, setMensagem] = useState('')
+    const [tipo, setTipo] = useState('');
 
     const obterCep = (evento) => {
         if (!evento.target.value){
@@ -76,11 +79,15 @@ const Perfil = () => {
         http.put('cliente/' + id, cliente)
         .then(response => {
           console.log(response.data)
-        })
+          setTipo("sucesso")
+          setMensagem("Dados alterados com sucesso")
+        }, 4000)
         .catch(erro => {
           console.log('Algo deu errado')
           console.log(erro)
-        })
+          setMensagem("Erro ao editar")
+          setTipo('')
+        }, 4000)
     }
 
     const manipuladorNome = (evento) =>{
@@ -179,6 +186,7 @@ const Perfil = () => {
                             <input value={username} onChange={manipuladorUsername} type="text" ></input>
                         </div>
                     </div>
+                    { mensagem && <MensagemErro tipo={tipo} msg={mensagem} /> }
                     <button className="botaoLoginCadastro">Salvar</button>
                 </form>
             </div>

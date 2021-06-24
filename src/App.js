@@ -4,12 +4,10 @@ import Navbar from './Navbar/Navbar';
 import Login from './Login/Login';
 import Produtos from './Produtos/Produtos';
 import Produto from './Produtos/ProdutoDetalhe';
-import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
 import Categoria from './Produtos/Categoria';
-import CadastroCategoria from './Produtos/CadastroCategoria';
 import Finalizar from './Carrinho/Finalizar';
 
 function App() {
@@ -66,14 +64,8 @@ function App() {
         <Route path="/produtos/:nome">
           <Produto aoAdicionar={adicionaProduto} />
         </Route>
-        <Route path="/cadastroproduto">
-          <CadastroProduto />
-        </Route>
         <Route path="/categoria">
           <Categoria />
-        </Route>
-        <Route path="/cadastrocategoria">
-          <CadastroCategoria />
         </Route>
         <Route path="/finalizar/:id">
           <Finalizar />

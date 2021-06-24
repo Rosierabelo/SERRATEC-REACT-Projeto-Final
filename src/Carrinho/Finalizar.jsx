@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../Http";
 import './carrinho.css'
-import MensagemAcerto from '../Login/MensagemAcerto'
+import MensagemErro from '../Login/MensagemAlerta';
 
 const Finalizar = () => {
     const { id } = useParams()
@@ -10,6 +10,7 @@ const Finalizar = () => {
     const [pagamento, setPagamento] = useState('')
     const [pagamentos] = useState(['PIX', 'BOLETO', 'CREDITO', 'DEBITO'])
     const [mensagem, setMensagem] = useState('')
+    const [tipo, setTipo] = useState('');
 
     const manipuladorPagamento = (evento) => {
         setPagamento(evento.target.value)
@@ -24,9 +25,11 @@ const Finalizar = () => {
         http.post('pedido/finalizar', pedido)
             .then(response => {
                 console.log(response);
+                setTipo("sucesso")
                 setMensagem("Compra Efetuada com sucesso")
             setTimeout(() => {
                 setMensagem("")
+                setTipo('')
                 }, 4000)
             }
             ).catch(erro => {
@@ -40,7 +43,6 @@ const Finalizar = () => {
         <div>
             <h1>Finalizar</h1>
             <div>
-            { mensagem && <MensagemAcerto msg={mensagem} /> }
                 <form onSubmit={finalizarPedido}>
                     <label>Forma de Pagamento:</label>
                     <select className="selectPagamento" value={pagamento} onChange={manipuladorPagamento}>
@@ -49,6 +51,7 @@ const Finalizar = () => {
                             <option key={indice} value={pgto}>{pgto}</option>
                         ))}
                     </select>
+                    { mensagem && <MensagemErro tipo={tipo} msg={mensagem} /> }
                     <button className="botaoFinalizar">Finalizar</button>
                 </form>
             </div>

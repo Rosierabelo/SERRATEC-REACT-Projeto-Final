@@ -11,11 +11,6 @@ table {
     padding: 8px;
     width: 60px;
   }
-  /* .preco{
-    display: flex;
-    flex: row;
-    align-items: center;
-  } */
   
   tr:nth-child(even) {
     background-color: #dddddd;
