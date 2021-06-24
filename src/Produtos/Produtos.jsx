@@ -5,17 +5,17 @@ import './estilo.css';
 
 const Produtos = () => {
 
-    const [produtos, setProdutos] = useState([]);
+    const [produtos, setProdutos] = useState([{preco:0}]);
 
     useEffect(() => {
         http.get('produto/todos').then(response => setProdutos(response.data))
     }, [])
 
     return (
-        <div>
+        <div className="bodyProduto">
             <h1>Produtos</h1>
-            <section> 
-                {produtos.map((item, indice) => <CardProdutos key={indice} id={item.id} codigo={item.codigo} categoria={item.categoria} nome={item.nome} descricao={item.descricao} preco={item.preco}/>)}
+            <section className="sectionProduto"> 
+                {produtos.map((item, indice) => <CardProdutos key={indice} id={item.id} codigo={item.codigo} categoria={item.categoria} nome={item.nome} descricao={item.descricao} preco={item.preco.toFixed(2)}/>)}
             </section>
         </div>
     )
