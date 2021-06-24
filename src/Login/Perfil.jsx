@@ -22,6 +22,31 @@ const Perfil = () => {
     const [numeroResidencia, setNumero] = useState('')
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
+    const [rua, setRua] = useState('')
+    const [bairro, setBairro] = useState('')
+    const [cidade, setCidade] = useState('')
+    const [uf, setUf] = useState('')
+    const [complemento, setComplemento] = useState('')
+
+    const obterCep = (evento) => {
+        if (!evento.target.value){
+            return
+        }
+        const url = `https://viacep.com.br/ws/${evento.target.value}/json/`;
+        http.get(url)
+        .then(response => {
+          if (!response.data.erro){
+              setRua(response.data.logradouro)
+              setBairro(response.data.bairro)
+              setCidade(response.data.localidade)
+              setUf(response.data.uf)
+          }
+          console.log(response.data);
+        })
+        .catch(erro => {
+          console.log(erro);
+        })
+      }
 
     useEffect(() => {
         http.get('cliente/detalhe/' + id)
@@ -32,6 +57,7 @@ const Perfil = () => {
             setData(response.data.dataNascimento)
             setCep(response.data.cep)
             setNumero(response.data.numeroResidencia)
+            setComplemento(response.data.complemento)
             setEmail(response.data.email)
             setUsername(response.data.username)
           })
@@ -46,7 +72,12 @@ const Perfil = () => {
             dataNascimento : dataNascimento,
             endereco : {
                 cep : cep,
-                numeroResidencia : numeroResidencia
+                numeroResidencia : numeroResidencia,
+                rua : rua,
+                bairro : bairro,
+                cidade : cidade,
+                estado : uf,
+                complemento : complemento
             },
             email : email,
             username : username,
@@ -94,6 +125,10 @@ const Perfil = () => {
         setUsername(evento.target.value)
     }
 
+    const manipuladorComplemento = (evento) =>{
+        setComplemento(evento.target.value)
+    }
+
 
     return (
         <div>
@@ -104,6 +139,10 @@ const Perfil = () => {
                         <div>
                             <label>Nome</label>
                             <input value={nome} onChange={manipuladorNome} type="text"></input>
+                        </div>
+                        <div>
+                            <label>Email</label>
+                            <input value={email} onChange={manipuladorEmail} type="text" disabled></input>
                         </div>
                         <div>
                             <label>CPF</label>
@@ -119,28 +158,39 @@ const Perfil = () => {
                         </div>
                         <div>
                             <label>CEP</label>
-                            <input value={cep} onChange={manipuladorCep} type="number"></input>
+                            <input value={cep} onBlur={obterCep} onChange={manipuladorCep} type="number"></input>
                         </div>
                         <div>
                             <label>Numero Residencial</label>
                             <input value={numeroResidencia} onChange={manipuladorNumero}  type="number"></input>
                         </div>
                         <div>
-                            <label>Email</label>
-                            <input value={email} onChange={manipuladorEmail} type="email" disabled></input>
+                            <label>Bairro</label>
+                            <input value={bairro} onChange={obterCep}  type="text"></input>
+                        </div>
+                        <div>
+                            <label>Cidade</label>
+                            <input value={cidade} onChange={obterCep} type="text" disabled></input>
+                        </div>
+                        <div>
+                            <label>Complemento</label>
+                            <input value={complemento} onChange={manipuladorComplemento}  type="text"></input>
+                        </div>
+                        <div>
+                            <label>Estado</label>
+                            <input value={uf} onChange={obterCep}  type="text"></input>
+                        </div>
+                        <div>
+                            <label>Rua</label>
+                            <input value={rua} onChange={obterCep}  type="text"></input>
                         </div>
                         <div>
                             <label>Username</label>
                             <input value={username} onChange={manipuladorUsername} type="text" ></input>
                         </div>
-                        <div>
-                            <label>Senha</label>
-                            <input type="password" disabled></input>
-                        </div>
                     </div>
                     <button className="botaoLoginCadastro">Salvar</button>
                 </form>
-                {/* )} */}
             </div>
         </div>
 
