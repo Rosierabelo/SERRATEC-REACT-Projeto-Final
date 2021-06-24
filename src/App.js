@@ -31,6 +31,7 @@ function App() {
 
   const [carrinho, setCarrinho] = useState([])
   const adicionaProduto = (item) =>{
+    console.log(item)
     setCarrinho([
       ...carrinho,
       item

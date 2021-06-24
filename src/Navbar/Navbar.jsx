@@ -26,8 +26,8 @@ const Navbar = ({token, aoLogout}) =>{
                             <li><Link onClick={logout}>Logout</Link></li>
                         </ul>
                         <ul>
-                            <a href="./Carrinho"><img className="carrinho" src={carrinho}></img></a>
-                            <a href="./Perfil"><img className="carrinho" src={perfil}></img></a>
+                            <Link to="/carrinho"><img className="carrinho" src={carrinho}></img></Link>
+                            <Link to="/perfil"><img className="carrinho" src={perfil}></img></Link>
                         </ul>
                     </nav>
         

@@ -10,6 +10,11 @@ table {
     text-align: left;
     padding: 8px;
   }
+  .preco{
+    display: flex;
+    flex: row;
+    align-items: center;
+  }
   
   tr:nth-child(even) {
     background-color: #dddddd;
