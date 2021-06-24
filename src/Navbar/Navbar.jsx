@@ -20,6 +20,7 @@ const Navbar = ({token, aoLogout}) =>{
                     <nav>
                         <ul>
                             <li><Link className="tituloTopo" to="/">Home</Link></li>
+                            <li><Link className="tituloTopo" to="/categoria">Categoria</Link></li>
                             <li><Link className="tituloTopo" to="/login">Login</Link></li>
                             <li><Link className="tituloTopo" to="/cadastro">Cadastre-se</Link></li>
                             <li><Link className="tituloTopo" to="/cadastroproduto">Cadastar Produto</Link></li>

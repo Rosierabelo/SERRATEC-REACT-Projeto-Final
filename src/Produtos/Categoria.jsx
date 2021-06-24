@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {busca} from '../Http'
+import busca from '../Http'
 import { Link } from 'react-router-dom'
 
 

@@ -8,6 +8,7 @@ import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
+import Categoria from './Produtos/Categoria';
 
 function App() {
 
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route path="/cadastroproduto">
           <CadastroProduto />
+        </Route>
+        <Route path="/categoria">
+          <Categoria />
         </Route>
         <Route path="/carrinho">
           <Carrinho produtos={carrinho}/>
