@@ -5,7 +5,7 @@ import './estilo.css';
 
 const Produtos = () => {
 
-    const [produtos, setProdutos] = useState([{preco:0}]);
+    const [produtos, setProdutos] = useState([]);
 
     useEffect(() => {
         http.get('produto/todos').then(response => setProdutos(response.data))
