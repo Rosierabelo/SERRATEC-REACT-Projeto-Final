@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import http from '../Http';
 import './Login.css'
 import axios from "axios"
+import MensagemErro from './MensagemErro'
 const Cadastro = () =>{
 
-    const id = localStorage.getItem('id')
     const [nome, setNome] = useState('')
     const [cpf, setCpf] = useState('')
     const [telefone, setTelefone] = useState('')
@@ -19,6 +19,7 @@ const Cadastro = () =>{
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [senha, setSenha] = useState('')
+    const [mensagem, setMensagem] = useState('')
 
     const obterCep = (evento) => {
         if (!evento.target.value){
@@ -39,22 +40,6 @@ const Cadastro = () =>{
           console.log(erro);
         })
       }
-
-    useEffect(() => {
-        http.get('cliente/detalhe/' + id)
-          .then(response => {
-            setNome(response.data.nome)
-            setTelefone(response.data.telefone)
-            setCpf(response.data.cpf)
-            setData(response.data.dataNascimento)
-            setCep(response.data.cep)
-            setNumero(response.data.numeroResidencia)
-            setComplemento(response.data.complemento)
-            setEmail(response.data.email)
-            setUsername(response.data.username)
-          })
-      }, [id])
-
 
     const efetuarCadastro = (evento) =>{
         evento.preventDefault()
@@ -77,7 +62,14 @@ const Cadastro = () =>{
             senha : senha
         }
         http.post('cliente', usuario)
-        .then(response => console.log(response.data))
+        .then(response => { 
+            console.log(response.data)
+            setMensagem("Cadastro Efetuado com sucesso")
+            setTimeout(() => {
+                setMensagem("")
+            }, 2000)
+
+        })
         .catch(erro => {
             console.log("Algo deu errado");
             console.log(erro);
@@ -128,31 +120,32 @@ const Cadastro = () =>{
     return (
         <div>
         <h1>Tela de Cadastro</h1>
+        
         <form onSubmit={efetuarCadastro}>
             <div>
                 <label>Nome</label>
-                <input onChange={manipuladorNome} type="text" required></input>
+                <input value={nome} onChange={manipuladorNome} type="text" required></input>
             </div>
             <div>
                 <label>CPF</label>
-                <input onChange={manipuladorCpf} type="number" required></input>
+                <input value={cpf} onChange={manipuladorCpf} type="number" required></input>
             </div>
             <div>
                 <label>Telefone</label>
-                <input onChange={manipuladorTelefone} type="number" required></input>
+                <input value={telefone} onChange={manipuladorTelefone} type="number" required></input>
             </div>
             <div>
                 <label>Data de Nascimento</label>
-                <input onChange={manipuladorData} type="date" required></input>
+                <input value={dataNascimento} onChange={manipuladorData} type="date" required></input>
             </div>
             <div>
                 <label>Endereço</label>
                 <label>CEP</label>
-                <input onBlur={obterCep} onChange={manipuladorCep} type="number"></input>
+                <input value={cep} onBlur={obterCep} onChange={manipuladorCep} type="number"></input>
             </div>
             <div>
                 <label>Numero Residencial</label>
-                <input onChange={manipuladorNumero}  type="number"></input>
+                <input value={numeroResidencia} onChange={manipuladorNumero}  type="number"></input>
             </div>
             <div>
                 <label>Bairro</label>
@@ -180,16 +173,17 @@ const Cadastro = () =>{
             </div>
             <div>
                 <label>Email</label>
-                <input onChange={manipuladorEmail} type="text" required></input>
+                <input value={email} onChange={manipuladorEmail} type="text" required></input>
             </div>
             <div>
                 <label>Username</label>
-                <input onChange={manipuladorUsername} type="text" required></input>
+                <input value={username} onChange={manipuladorUsername} type="text" required></input>
             </div>
             <div>
                 <label>Senha</label>
                 <input onChange={manipuladorSenha} type="password" required></input>
             </div>
+            { mensagem && <MensagemErro msg={mensagem} /> }
             <button className="botaoLoginCadastro">Cadastrar</button>
         </form>
     </div>

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../Http";
 import './carrinho.css';
-const Carrinho = ({produtos}) =>{
+
+
+const Carrinho = ({produtos, aoExcluir}) =>{
+
+    
     return(
         <div>
             <h1>Carrinho</h1>
@@ -14,10 +18,12 @@ const Carrinho = ({produtos}) =>{
                         <th>Preço</th>
                         <th></th>
                     </tr>
-                    {produtos.map((item) => <tr key={item.numeroPedido} numeroPedido={item.numeroPedido}>
+                    {produtos.map((item, indice) => <tr key={item.numeroPedido} numeroPedido={item.numeroPedido}>
                         <td>{item.nome}</td>
                         <td className="preco"><p>R$ </p>{item.preco.toFixed(2)}</td>
-                        <td><button>Excluir</button></td>
+                        <td><button onClick={() =>{
+                            aoExcluir(indice)
+                        }}>Excluir</button></td>
                     </tr>)}
                 </table>
                 <button className="botaoComprar">Comprar</button>

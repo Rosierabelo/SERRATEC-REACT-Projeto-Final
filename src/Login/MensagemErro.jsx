@@ -1,5 +1,5 @@
 const MensagemErro = ({msg}) => {
-    return (<p className="alert alert-danger">
+    return (<p className="alert alert-success">
       {msg}
     </p>)
   }

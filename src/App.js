@@ -38,6 +38,12 @@ function App() {
       item
     ])
   }
+
+  const aoExcluir = (indice) =>{
+    carrinho.splice(indice, 1)
+    setCarrinho([...carrinho])
+  }
+
   return (
     <BrowserRouter>
     <Navbar token={token} aoLogout={logout}/>
@@ -64,7 +70,7 @@ function App() {
           <Categoria />
         </Route>
         <Route path="/carrinho">
-          <Carrinho produtos={carrinho}/>
+          <Carrinho produtos={carrinho} aoExcluir={aoExcluir} />
         </Route>
       </Switch>
     </BrowserRouter>
