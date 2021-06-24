@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './formProduto.css';
 import http from "../Http";
+import MensagemErro from '../Login/MensagemErro';
 const FormularioRegistro = () => {
 
     const [nome, setNome] = useState('');
@@ -9,6 +10,7 @@ const FormularioRegistro = () => {
     const [preco, setPreco] = useState('');
     const [quantidadeEstoque, setQuantidadeEstoque] = useState('');
     const [categoria, setCategoria] = useState('');
+    const [mensagem, setMensagem] = useState('');
 
     const manipuladorNome = (evento) => {
         setNome(evento.target.value)
@@ -34,6 +36,11 @@ const FormularioRegistro = () => {
         setCategoria(evento.target.value)
     }
 
+    const [categorias, setCategorias] = useState([])
+    useEffect(() => {
+        http.get('categoria/todas').then(response => setCategorias(response.data))
+    }, [])
+
     const cadastrarProduto = (evento) => {
         evento.preventDefault()
         const produto = {
@@ -43,14 +50,22 @@ const FormularioRegistro = () => {
             preco: preco,
             quantidadeEstoque: quantidadeEstoque,
             categoria:{
-                id: 1
+                id: categoria
             }
         }
 
         http.post('produto', produto).then(response => {
             console.log(response.data)
+            setMensagem("Cadastro Efetuado com sucesso")
+            setTimeout(() => {
+                setMensagem("")
+            }, 3000)
         }).catch(erro => {
             console.log(erro)
+            setMensagem("Cadastro não efetuado")
+            setTimeout(() => {
+                setMensagem('')
+            }, 4000)
         })
     }
 
@@ -80,8 +95,14 @@ const FormularioRegistro = () => {
             </div>
             <div>
                 <label className="labels">Categoria</label>
-                <input required value={categoria} onChange={manipuladorCategoria} />
+                <select className="selecionaCateg" onChange={manipuladorCategoria}>
+                    <option></option>
+                    {categorias.map((categoria, indice) => (
+                    <option key={indice} value={categoria.id}>{categoria.nome}</option>  
+                    ))}
+                </select>
             </div>
+            { mensagem && <MensagemErro msg={mensagem} /> }
             <button className="botaoProdCadastro">
                 Cadastrar
             </button>

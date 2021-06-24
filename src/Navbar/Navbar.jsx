@@ -21,6 +21,7 @@ const Navbar = ({token, aoLogout}) =>{
                         <ul>
                             <li><Link className="tituloTopo" to="/">Home</Link></li>
                             <li><Link className="tituloTopo" to="/cadastroproduto">Cadastar Produto</Link></li>
+                            <li><Link className="tituloTopo" to="/cadastrocategoria">Cadastar Categoria</Link></li>
                             <li><Link className="tituloTopo" onClick={logout}>Logout</Link></li>
                         </ul>
                         <ul>

@@ -8,7 +8,8 @@ import CadastroProduto from './Produtos/CadastroProduto';
 import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
-import Finalizar from './Carrinho/Finalizar';
+import Categoria from './Produtos/Categoria';
+import CadastroCategoria from './Produtos/CadastroCategoria';
 
 function App() {
 
@@ -66,6 +67,12 @@ function App() {
         </Route>
         <Route path="/cadastroproduto">
           <CadastroProduto />
+        </Route>
+        <Route path="/categoria">
+          <Categoria />
+        </Route>
+        <Route path="/cadastrocategoria">
+          <CadastroCategoria />
         </Route>
         <Route path="/finalizar/:id">
           <Finalizar />
