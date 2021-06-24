@@ -18,14 +18,14 @@ const Produto = ({aoAdicionar}) => {
     return(
         <div className="detalhe-prod">
             <h2 className="titulo-prod">{produto.nome}</h2>
-            <div>
+            <div className="detalheItem">
                 <h4>{produto.categoria.nome}</h4>
                 <h4>{produto.codigo}</h4>
                 <p>{produto.descricao}</p>
                 <div className="preco-prod">
                     <p>R$ </p><p>{produto.preco.toFixed(2)}</p>
                 </div>
-                <button onClick={adicionaAoCarrinho}>
+                <button className="comprar" onClick={adicionaAoCarrinho}>
                     Comprar
                 </button>
             </div>
