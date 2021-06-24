@@ -44,7 +44,7 @@ const Finalizar = () => {
                 <form onSubmit={finalizarPedido}>
                     <label>Forma de Pagamento:</label>
                     <select className="selectPagamento" value={pagamento} onChange={manipuladorPagamento}>
-                        <option></option>
+                        <option>----</option>
                         {pagamentos.map((pgto, indice) => (
                             <option key={indice} value={pgto}>{pgto}</option>
                         ))}

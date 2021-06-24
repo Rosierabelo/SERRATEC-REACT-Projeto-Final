@@ -64,7 +64,9 @@ table {
 
   .selectPagamento{
     width: 500px;
+    height: 30px;
     margin: 0 auto;
+    background-color: #dddddd;
   }
 
   .botaoFinalizar{
