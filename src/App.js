@@ -9,6 +9,7 @@ import Perfil from './Login/Perfil';
 import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
 import Categoria from './Produtos/Categoria';
+import CadastroCategoria from './Produtos/CadastroCategoria';
 
 function App() {
 
@@ -65,6 +66,9 @@ function App() {
         </Route>
         <Route path="/cadastroproduto">
           <CadastroProduto />
+        </Route>
+        <Route path="/cadastrocategoria">
+          <CadastroCategoria />
         </Route>
         <Route path="/categoria">
           <Categoria />

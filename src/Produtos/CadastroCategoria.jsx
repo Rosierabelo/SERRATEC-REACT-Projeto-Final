@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import './formProduto.css';
 import http from "../Http";
 import MensagemErro from '../Login/MensagemErro';
