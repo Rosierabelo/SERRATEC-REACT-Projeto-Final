@@ -9,12 +9,13 @@ table {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    width: 60px;
   }
-  .preco{
+  /* .preco{
     display: flex;
     flex: row;
     align-items: center;
-  }
+  } */
   
   tr:nth-child(even) {
     background-color: #dddddd;
@@ -57,8 +58,8 @@ table {
 
   .inputCarrinho{
     width: 130px;
-    background-color: #dddddd;
     border: none;
+    background-color: transparent;
   }
 
   .selectPagamento{

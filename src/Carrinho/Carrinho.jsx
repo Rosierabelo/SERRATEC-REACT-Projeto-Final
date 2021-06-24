@@ -41,9 +41,8 @@ const Carrinho = ({produtos, aoExcluir}) =>{
                         <th></th>
                     </tr>
                     {produtos.map((item, indice) => <tr key={item.numeroPedido} numeroPedido={item.numeroPedido}>
-                        <td>{item.nome}</td>
-                        
-                        <td className="preco"><p>R$ </p>{item.preco.toFixed(2)}</td>
+                       <td>{item.nome}</td>
+                        <td className="preco">R$ {item.preco.toFixed(2)}</td>
                         <td><input value={item.quantidade} className="inputCarrinho" type="number" placeholder="1-100" onChange={(evento) => {
                             item.quantidade = evento.target.value
                         }}></input></td>
