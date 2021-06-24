@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../Http";
-
+import { Link } from "react-router-dom";
 const Produto = ({aoAdicionar}) => {
     const { nome } = useParams();
     const [produto, setProduto] = useState({categoria:{}, preco:0});
@@ -25,9 +25,7 @@ const Produto = ({aoAdicionar}) => {
                 <div className="preco-prod">
                     <p>R$ </p><p>{produto.preco.toFixed(2)}</p>
                 </div>
-                <button className="comprar" onClick={adicionaAoCarrinho}>
-                    Comprar
-                </button>
+                <Link to="/carrinho"><button className="comprar" onClick={adicionaAoCarrinho}>Comprar</button></Link>
             </div>
         </div>
     )

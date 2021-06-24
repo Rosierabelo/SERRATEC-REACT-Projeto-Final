@@ -34,7 +34,7 @@ const Login = ({onLogin}) =>{
         .catch(erro => {
             console.log('Algo deu errado')
             if (erro.response.data && erro.response.data.message) {
-              setMensagem(erro.response.data.message)
+              setMensagem("Email ou Senha incorreto")
             } else {
               setMensagem('OPS... um erro não esperado.')
             }

@@ -20,9 +20,6 @@ const Navbar = ({token, aoLogout}) =>{
                     <nav>
                         <ul>
                             <li><Link className="tituloTopo" to="/">Home</Link></li>
-                            <li><Link className="tituloTopo" to="/categoria">Categoria</Link></li>
-                            <li><Link className="tituloTopo" to="/login">Login</Link></li>
-                            <li><Link className="tituloTopo" to="/cadastro">Cadastre-se</Link></li>
                             <li><Link className="tituloTopo" to="/cadastroproduto">Cadastar Produto</Link></li>
                             <li><Link className="tituloTopo" onClick={logout}>Logout</Link></li>
                         </ul>
@@ -39,8 +36,8 @@ const Navbar = ({token, aoLogout}) =>{
         return <div>
             <nav>
                 <ul>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/cadastro">Cadastre-se</Link></li>
+                    <li><Link className="tituloTopo" to="/login">Login</Link></li>
+                    <li><Link className="tituloTopo" to="/cadastro">Cadastre-se</Link></li>
                 </ul>
             </nav>
         </div>

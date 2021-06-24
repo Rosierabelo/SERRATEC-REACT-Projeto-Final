@@ -21,7 +21,7 @@ const Carrinho = ({produtos, aoExcluir}) =>{
                     {produtos.map((item, indice) => <tr key={item.numeroPedido} numeroPedido={item.numeroPedido}>
                         <td>{item.nome}</td>
                         <td className="preco"><p>R$ </p>{item.preco.toFixed(2)}</td>
-                        <td><button onClick={() =>{
+                        <td><button className="botaoExcluir" onClick={() =>{
                             aoExcluir(indice)
                         }}>Excluir</button></td>
                     </tr>)}

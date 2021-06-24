@@ -73,6 +73,10 @@ const Cadastro = () =>{
         .catch(erro => {
             console.log("Algo deu errado");
             console.log(erro);
+            setMensagem("Cadastro não efetuado")
+            setTimeout(() => {
+                setMensagem('')
+            }, 4000)
         })
     }
 
