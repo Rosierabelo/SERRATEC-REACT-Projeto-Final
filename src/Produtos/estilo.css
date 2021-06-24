@@ -1,6 +1,7 @@
 /* Produtos */
 
 .bodyProduto{
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -14,6 +15,7 @@ h1 {
     display:flex;
     flex-direction:row;
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
 }
 
@@ -23,6 +25,7 @@ h1 {
     border: 3px solid #333;
     border-radius: 5px;
     margin: 5px;
+    margin-top: 20px;
     flex: 0 0 30%;
     display: flex;
     flex-direction: column;
@@ -31,6 +34,7 @@ h1 {
 }
 .cardPreco{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -54,6 +58,9 @@ h1 {
 /* Detalhe Produto */
 
 .detalhe-prod{
+    border: 3px solid #333;
+    border-radius: 5px;
+    width: 30%;
     margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
@@ -69,11 +76,15 @@ h1 {
     justify-content: center;
 }
 .titulo-prod{
-    display: flex;
-    padding: 20px;
-    color:#333;
+    width: 95%;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color:#333;
+    color: floralwhite;
+    margin: 3px 1px;
+    min-height: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 30px;
 }
 .preco-prod{
     display: flex;

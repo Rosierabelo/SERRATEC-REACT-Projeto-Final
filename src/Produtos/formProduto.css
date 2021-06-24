@@ -33,8 +33,14 @@ h1 {
       height: 32px;
       font-size: 20px;
     }
+    .selecionaCateg{
+      width: 100%;
+      border: none;
+      border-bottom: 3px solid black;
+    }
   
     .botaoProdCadastro {
+      margin-top: 20px;
       width: 100%;
       font-size: 20px;
       padding: 5px;
