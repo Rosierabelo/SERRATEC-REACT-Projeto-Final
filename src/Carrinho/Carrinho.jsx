@@ -7,6 +7,7 @@ const Carrinho = ({produtos}) =>{
         <div>
             <h1>Carrinho</h1>
             <div>
+                <p>{produtos.lenght}</p>
                 <table>
                     <tr>
                         <th>Produto</th>
@@ -15,7 +16,7 @@ const Carrinho = ({produtos}) =>{
                     </tr>
                     {produtos.map((item) => <tr key={item.numeroPedido} numeroPedido={item.numeroPedido}>
                         <td>{item.nome}</td>
-                        <td>{item.preco}</td>
+                        <td className="preco"><p>R$ </p>{item.preco.toFixed(2)}</td>
                         <td><button>Excluir</button></td>
                     </tr>)}
                 </table>

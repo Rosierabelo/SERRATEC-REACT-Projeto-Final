@@ -11,6 +11,7 @@ const Produto = ({aoAdicionar}) => {
     }, [nome])
 
     const adicionaAoCarrinho = ()=>{
+        
         aoAdicionar(produto)
     }
 
