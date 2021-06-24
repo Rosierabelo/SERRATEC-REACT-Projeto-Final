@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import http from '../Http';
 import './Login.css'
 import axios from "axios"
-import MensagemErro from './MensagemErro'
+import MensagemAcerto from './MensagemAcerto'
+import MensagemErro from './MensagemErro';
 const Cadastro = () =>{
 
     const [nome, setNome] = useState('')
@@ -67,7 +68,7 @@ const Cadastro = () =>{
             setMensagem("Cadastro Efetuado com sucesso")
             setTimeout(() => {
                 setMensagem("")
-            }, 2000)
+            }, 4000)
 
         })
         .catch(erro => {
@@ -187,6 +188,7 @@ const Cadastro = () =>{
                 <label>Senha</label>
                 <input onChange={manipuladorSenha} type="password" required></input>
             </div>
+            { mensagem && <MensagemAcerto msg={mensagem} /> }
             { mensagem && <MensagemErro msg={mensagem} /> }
             <button className="botaoLoginCadastro">Cadastrar</button>
         </form>

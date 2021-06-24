@@ -41,7 +41,7 @@ const Login = ({onLogin}) =>{
             }
             setTimeout(() => {
               setMensagem('')
-            }, 4500);
+            }, 4000);
           })
     }
 
