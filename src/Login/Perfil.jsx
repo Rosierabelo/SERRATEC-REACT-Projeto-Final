@@ -3,18 +3,7 @@ import http from "../Http"
 import axios from "axios"
 const Perfil = () => {
 
-     const id = localStorage.getItem('id')
-    // const [clientes, setCliente] = useState([])
-
-    // const obterCliente = () => {
-    //     http.get('cliente/detalhe' + id)
-    //     .then(response => setCliente(response.data))
-    // }
-
-    // useEffect(() =>{
-    //     obterCliente()
-    // },[id])
-
+    const id = localStorage.getItem('id')
     const [nome, setNome] = useState('')
     const [cpf, setCpf] = useState('')
     const [telefone, setTelefone] = useState('')

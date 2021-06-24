@@ -1,17 +1,60 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import http from '../Http';
 import './Login.css'
+import axios from "axios"
 const Cadastro = () =>{
 
+    const id = localStorage.getItem('id')
     const [nome, setNome] = useState('')
     const [cpf, setCpf] = useState('')
     const [telefone, setTelefone] = useState('')
     const [dataNascimento, setData] = useState('')
     const [cep, setCep] = useState('')
     const [numeroResidencia, setNumero] = useState('')
+    const [rua, setRua] = useState('')
+    const [bairro, setBairro] = useState('')
+    const [cidade, setCidade] = useState('')
+    const [uf, setUf] = useState('')
+    const [complemento, setComplemento] = useState('')
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [senha, setSenha] = useState('')
+
+    const obterCep = (evento) => {
+        if (!evento.target.value){
+            return
+        }
+        const url = `https://viacep.com.br/ws/${evento.target.value}/json/`;
+        axios.get(url)
+        .then(response => {
+          if (!response.data.erro){
+              setRua(response.data.logradouro)
+              setBairro(response.data.bairro)
+              setCidade(response.data.localidade)
+              setUf(response.data.uf)
+          }
+          console.log(response.data);
+        })
+        .catch(erro => {
+          console.log(erro);
+        })
+      }
+
+    useEffect(() => {
+        http.get('cliente/detalhe/' + id)
+          .then(response => {
+            setNome(response.data.nome)
+            setTelefone(response.data.telefone)
+            setCpf(response.data.cpf)
+            setData(response.data.dataNascimento)
+            setCep(response.data.cep)
+            setNumero(response.data.numeroResidencia)
+            setComplemento(response.data.complemento)
+            setEmail(response.data.email)
+            setUsername(response.data.username)
+          })
+      }, [id])
+
 
     const efetuarCadastro = (evento) =>{
         evento.preventDefault()
@@ -22,7 +65,12 @@ const Cadastro = () =>{
             dataNascimento : dataNascimento,
             endereco : {
                 cep : cep,
-                numeroResidencia : numeroResidencia
+                numeroResidencia : numeroResidencia,
+                rua : rua,
+                bairro : bairro,
+                cidade : cidade,
+                estado : uf,
+                complemento : complemento
             },
             email : email,
             username : username,
@@ -60,6 +108,10 @@ const Cadastro = () =>{
         setNumero(evento.target.value)
     }
 
+    const manipuladorComplemento = (evento) =>{
+        setComplemento(evento.target.value)
+    }
+
     const manipuladorEmail = (evento) =>{
         setEmail(evento.target.value)
     }
@@ -79,24 +131,48 @@ const Cadastro = () =>{
         <form onSubmit={efetuarCadastro}>
             <div>
                 <label>Nome</label>
-                <input value={nome}  onChange={manipuladorNome} type="text" required></input>
+                <input onChange={manipuladorNome} type="text" required></input>
             </div>
             <div>
                 <label>CPF</label>
-                <input value={cpf} onChange={manipuladorCpf} type="number" required></input>
+                <input onChange={manipuladorCpf} type="number" required></input>
             </div>
             <div>
                 <label>Telefone</label>
-                <input value={telefone} onChange={manipuladorTelefone} type="number" required></input>
+                <input onChange={manipuladorTelefone} type="number" required></input>
             </div>
             <div>
                 <label>Data de Nascimento</label>
-                <input value={dataNascimento} onChange={manipuladorData} type="date" required></input>
+                <input onChange={manipuladorData} type="date" required></input>
             </div>
             <div>
                 <label>Endereço</label>
                 <label>CEP</label>
-                <input value={cep} onChange={manipuladorCep} type="number" required></input>
+                <input onBlur={obterCep} onChange={manipuladorCep} type="number"></input>
+            </div>
+            <div>
+                <label>Numero Residencial</label>
+                <input onChange={manipuladorNumero}  type="number"></input>
+            </div>
+            <div>
+                <label>Bairro</label>
+                <input value={bairro} onChange={obterCep}  type="text"></input>
+            </div>
+            <div>
+                <label>Cidade</label>
+                <input value={cidade} onChange={obterCep} type="text"></input>
+            </div>
+            <div>
+                <label>Complemento</label>
+                <input value={complemento} onChange={manipuladorComplemento}  type="text"></input>
+            </div>
+            <div>
+                <label>Estado</label>
+                <input value={uf} onChange={obterCep}  type="text"></input>
+            </div>
+            <div>
+                <label>Rua</label>
+                <input value={rua} onChange={obterCep}  type="text"></input>
             </div>
             <div>
                 <label>Numero Residencial</label>
@@ -104,15 +180,15 @@ const Cadastro = () =>{
             </div>
             <div>
                 <label>Email</label>
-                <input value={email} onChange={manipuladorEmail} type="text" required></input>
+                <input onChange={manipuladorEmail} type="text" required></input>
             </div>
             <div>
                 <label>Username</label>
-                <input value={username} onChange={manipuladorUsername} type="text" required></input>
+                <input onChange={manipuladorUsername} type="text" required></input>
             </div>
             <div>
                 <label>Senha</label>
-                <input value={senha} onChange={manipuladorSenha} type="password" required></input>
+                <input onChange={manipuladorSenha} type="password" required></input>
             </div>
             <button className="botaoLoginCadastro">Cadastrar</button>
         </form>
