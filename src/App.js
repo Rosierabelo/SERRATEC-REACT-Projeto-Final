@@ -10,6 +10,7 @@ import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
 import Categoria from './Produtos/Categoria';
 import CadastroCategoria from './Produtos/CadastroCategoria';
+import Finalizar from './Carrinho/Finalizar';
 
 function App() {
 
