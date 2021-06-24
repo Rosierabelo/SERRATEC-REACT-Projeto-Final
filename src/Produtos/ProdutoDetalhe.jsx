@@ -5,6 +5,14 @@ import http from "../Http";
 const Produto = () => {
     const { nome } = useParams();
     const [produto, setProduto] = useState({categoria:{}, preco:0});
+    const [carrinho, setCarrinho] = useState([]);
+    
+    const adicionaProduto = (item) =>{
+    setCarrinho([
+        ...carrinho,
+        item
+        ])
+     }
 
     useEffect(() => {
         http.get('produto/' + nome).then(response => setProduto(response.data))
@@ -20,6 +28,9 @@ const Produto = () => {
                 <div className="preco-prod">
                     <p>R$ </p><p>{produto.preco.toFixed(2)}</p>
                 </div>
+                <button>
+                    Comprar{adicionaProduto}
+                </button>
             </div>
         </div>
     )

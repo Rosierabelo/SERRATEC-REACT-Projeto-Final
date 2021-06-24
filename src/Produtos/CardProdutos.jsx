@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import './estilo.css'
 
 const CardProdutos = ({ nome, preco, id, categoria }) => {
+    
+
     return (
         <div className="cardProduto">
             <h3 className="titulo">{nome}</h3>
