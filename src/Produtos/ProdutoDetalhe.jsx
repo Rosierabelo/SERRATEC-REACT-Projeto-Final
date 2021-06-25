@@ -4,7 +4,7 @@ import http from "../Http";
 import { Link } from "react-router-dom";
 
 
-const Produto = ({ aoAdicionar, url }) => {
+const Produto = ({ aoAdicionar}) => {
     const { nome } = useParams();
     const [produto, setProduto] = useState({ categoria: {}, preco: 0 });
 
@@ -20,7 +20,7 @@ const Produto = ({ aoAdicionar, url }) => {
     return (
         <div className="bodyProduto">
             <div className="detalhe-prod">
-                <img className="imagem" src={url}></img>
+                <img className="imagemDetalhe" src={produto.url}></img>
                 <h2 className="titulo-prod">{produto.nome}</h2>
                 <div className="detalheItem">
                     <h4>{produto.categoria.nome}</h4>
