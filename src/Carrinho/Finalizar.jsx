@@ -27,13 +27,17 @@ const Finalizar = () => {
                 console.log(response);
                 setTipo("sucesso")
                 setMensagem("Compra Efetuada com sucesso")
-            setTimeout(() => {
-                setMensagem("")
-                setTipo('')
+                setTimeout(() => {
+                    setMensagem("")
+                    setTipo('')
                 }, 4000)
             }
             ).catch(erro => {
                 console.log(erro);
+                setMensagem("Pedido não efetuado")
+                setTimeout(() => {
+                    setMensagem('')
+                }, 4000)
             })
 
     }
@@ -51,7 +55,7 @@ const Finalizar = () => {
                             <option key={indice} value={pgto}>{pgto}</option>
                         ))}
                     </select>
-                    { mensagem && <MensagemErro tipo={tipo} msg={mensagem} /> }
+                    {mensagem && <MensagemErro tipo={tipo} msg={mensagem} />}
                     <button className="botaoFinalizar">Finalizar</button>
                 </form>
             </div>
