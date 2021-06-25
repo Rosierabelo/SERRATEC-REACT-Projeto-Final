@@ -9,6 +9,8 @@ import Carrinho from './Carrinho/Carrinho';
 import { useEffect, useState } from 'react';
 import Categoria from './Produtos/Categoria';
 import Finalizar from './Carrinho/Finalizar';
+import Pagina404 from './Pagina404/Pagina404';
+import './App.css'
 
 function App() {
 
@@ -72,6 +74,9 @@ function App() {
         </Route>
         <Route path="/carrinho">
           <Carrinho produtos={carrinho} aoExcluir={aoExcluir} />
+        </Route>
+        <Route >
+          <Pagina404 />
         </Route>
       </Switch>
     </BrowserRouter>

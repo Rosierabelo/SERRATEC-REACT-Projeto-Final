@@ -1,0 +1,15 @@
+
+.fundo{
+    min-height: calc(100vh - 80px);
+    background-image: url(./imagem.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1{
+    text-align: center;
+    font-size: 3em;
+    font-family: "Lobster", cursive;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    color: rgb(128, 128, 128)
+}
